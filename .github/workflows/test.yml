@@ -27,7 +27,7 @@ jobs:
           const octokit = new Octokit();
           octokit.issues.listForRepo({
             owner: 'MoeenAhamd',
-            repo: 'moeenahamd.github.io',
+            repo: 'moeenahamd.github.io'
           }).then(({ data }) => {
             for (const issue of data) {
               console.log(`Issue #${issue.number}: ${issue.title}`);
