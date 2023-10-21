@@ -13,25 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install Dependencies
-        run: npm install @octokit/rest
-
       - name: Fetch Issues
         run: |
-          const { Octokit } = require('@octokit/rest');
-          const octokit = new Octokit();
-          octokit.issues.listForRepo({
-            owner: 'MoeenAhamd',
-            repo: 'moeenahamd.github.io'
-          }).then(({ data }) => {
-            for (const issue of data) {
-              console.log(`Issue #${issue.number}: ${issue.title}`);
-            }
-          });
+          # Replace these placeholders with your GitHub username, repository, and optional personal access token
+          GITHUB_USERNAME=Moeenahamd
+          GITHUB_REPO=moeenahamd.github.io
+          GITHUB_TOKEN=${{secrets.PETOKEN}}
+
+          # Create a variable for the GitHub API URL
+          GITHUB_API_URL="https://api.github.com/repos/$GITHUB_USERNAME/$GITHUB_REPO/issues"
+
+          # Fetch issues from the repository
+          if [ -n "$GITHUB_TOKEN" ]; then
+            curl -H "Authorization: token $GITHUB_TOKEN" \
+                 -H "Accept: application/vnd.github.v3+json" \
+                 "$GITHUB_API_URL"
+          else
+            curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.PETOKEN }}
