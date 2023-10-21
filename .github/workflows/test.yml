@@ -25,9 +25,10 @@ jobs:
 
           # Fetch issues from the repository
           if [ -n "$GITHUB_TOKEN" ]; then
-            curl -H "Authorization: token $GITHUB_TOKEN" \
+            data_from_api_1=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL" --output fiat-rates.json
+                 "$GITHUB_API_URL")
+            echo "$data_from_api_1" > api_data_1.json
           else
             curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
           fi
