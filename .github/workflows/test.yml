@@ -36,7 +36,7 @@ jobs:
                  "$GITHUB_API_URL2")
                  
           combined_array=("${API_DATA1[@]}","${API_DATA2[@]}")
-          echo "$combined_array" > test.json
+          echo "$API_DATA1" > test.json
 
           # Set the output variable with the concatenated array
           echo "::set-output name=concatenated_array::${combined_array[@]}"
