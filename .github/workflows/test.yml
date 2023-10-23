@@ -36,13 +36,14 @@ jobs:
                  "$GITHUB_API_URL2")
                  
           combined_array=("${API_DATA1[@]}","${API_DATA2[@]}")
-          echo "$API_DATA1" > test.json
           
           # Use JavaScript to parse the JSON arrays and combine them
           combined_json=$(node -e "const arr1 = ${API_DATA1}; const arr2 = ${API_DATA1}; const combined = [...arr1, ...arr2]; console.log(JSON.stringify(combined));")
 
           # Set the output variable with the concatenated array
           echo "::set-output name=combined_json::${combined_json}"
+          
+          echo "$combined_json" > test.json
           
             
           else
