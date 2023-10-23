@@ -41,7 +41,6 @@ jobs:
             
             json1=$(cat test1.json)
             json2=$(cat test2.json)
-            finaldata = json1.concat(json2) > final.json
             
           else
             curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
