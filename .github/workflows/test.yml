@@ -1,4 +1,4 @@
-name: JavaScript Example
+name: JavaScript Concatenate Arrays
 
 on:
   push:
@@ -17,11 +17,17 @@ jobs:
         id: javascript
         run: |
           echo "Running JavaScript code"
-          num1=5
-          num2=7
-          sum=$((num1 + num2))
-          echo "::set-output name=sum::$sum"
+          # Define two example arrays
+          array1=("apple" "banana" "cherry")
+          array2=("date" "fig" "grape")
+
+          # Use concat to combine the arrays
+          combined_array=("${array1[@]}" "${array2[@]}")
+
+          # Set the output variable with the concatenated array
+          echo "::set-output name=concatenated_array::${combined_array[@]}"
           
       - name: Display Result
         run: |
-          echo "The sum of ${{ steps.javascript.outputs.sum }}"
+          # Display the concatenated array
+          echo "Concatenated Array: ${{ steps.javascript.outputs.concatenated_array }}"
