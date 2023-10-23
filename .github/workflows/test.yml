@@ -35,7 +35,8 @@ jobs:
                  -H "Accept: application/vnd.github.v3+json" \
                  "$GITHUB_API_URL2")
                  
-          combined_array=("${API_DATA1[@]}" "${API_DATA2[@]}")
+          combined_array=("${API_DATA1[@]}","${API_DATA2[@]}")
+          echo "$combined_array" > test.json
 
           # Set the output variable with the concatenated array
           echo "::set-output name=concatenated_array::${combined_array[@]}"
@@ -45,9 +46,12 @@ jobs:
             curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
           fi
           
-      - name: Display Result
-        run: |
-          # Display the concatenated array
-          echo "Concatenated Array: ${{ steps.javascript.outputs.concatenated_array }}"
+      - name: Push into Git
+        run: |-
+          git config --global user.email "moeenranjha01@gmail.com"
+          git config --global user.name "Moeenahamd"
+          # git add test.json
+          # git commit -m "Automated update of rate"
+          # git push
       
         
