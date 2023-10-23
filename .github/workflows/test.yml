@@ -33,7 +33,7 @@ jobs:
             API_DATA2=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
                  "$GITHUB_API_URL2")
-            echo ::set-output name=combined_array::{\"$(echo -n '['; echo -n \${{ toJson("$API_DATA1" }}); echo -n ','; echo -n \${{ toJson("$API_DATA2" }}); echo -n ']')\"}
+            echo ::set-output name=combined_array::{\"$(echo -n '['; echo -n \${{ toJson($API_DATA1}); echo -n ','; echo -n \${{ toJson($API_DATA2}}); echo -n ']')\"}
             echo "$combined_array" > test.json
             
           else
