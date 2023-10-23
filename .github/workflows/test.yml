@@ -38,6 +38,8 @@ jobs:
                  "$GITHUB_API_URL2")
                  
             echo "$API_DATA2" > test2.json
+
+            console.log("called")
             
             json1=$(cat test1.json)
             json2=$(cat test2.json)
