@@ -29,12 +29,16 @@ jobs:
           if [ -n "$GITHUB_TOKEN" ]; then
             API_DATA1=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL")
+                 "$GITHUB_API_URL") --output test1.json
             API_DATA2=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL2")
-            echo ::set-output name=combined_array::{\"$(echo -n '['; echo -n \${{ toJson($API_DATA1}); echo -n ','; echo -n \${{ toJson($API_DATA2}}); echo -n ']')\"}
-            echo "$combined_array" > test.json
+                 "$GITHUB_API_URL2") --output test2.json
+            json1=$(cat test1.json)
+            json2=$(cat test2.json)
+
+          # Combine the JSON arrays using JavaScript
+            combined_json=$(node -e "const arr1 = $json1; const arr2 = $json2; const combined = arr1.concat(arr2); console.log(JSON.stringify(combined));" > combined.json)
+
             
           else
             curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
@@ -43,7 +47,7 @@ jobs:
         run: |-
           git config --global user.email "moeenranjha01@gmail.com"
           git config --global user.name "Moeenahamd"
-          git add test.json
+          git add combined.json
           git commit -m "Automated update of rate"
           git push
         
