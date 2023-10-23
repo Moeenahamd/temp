@@ -42,7 +42,7 @@ jobs:
           combined_json=$(node -e "const arr1 = ${API_DATA1}; const arr2 = ${API_DATA1}; const combined = [...arr1, ...arr2]; console.log(JSON.stringify(combined));")
 
           # Set the output variable with the concatenated array
-          echo "::set-output name=concatenated_array::${combined_array[@]}"
+          echo "::set-output name=combined_json::${combined_json}"
           
             
           else
