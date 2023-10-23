@@ -33,13 +33,13 @@ jobs:
             API_DATA2=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
                  "$GITHUB_API_URL2")
-            echo "$API_DATA1" "$API_DATA2" > test.json
-
             
           else
             curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
           fi
-          
+      - name: Set up Bash
+        run: echo ::set-output name=combined_array::{\"$(echo -n '['; echo -n \${{ toJson(API_DATA1 }}); echo -n ','; echo -n \${{ toJson(API_DATA2 }}); echo -n ']')\"}
+            echo "$combined_array" > test.json
       - name: Push into Git
         run: |-
           git config --global user.email "moeenranjha01@gmail.com"
