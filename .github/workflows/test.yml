@@ -1,4 +1,4 @@
-name: Fetch GitHub Issues
+name: JavaScript Example
 
 on:
   push:
@@ -6,57 +6,17 @@ on:
       - main
 
 jobs:
-  fetch-issues:
+  run_js:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v2
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
 
-      - name: Fetch Issues
+      - name: Execute JavaScript
         run: |
-          # Replace these placeholders with your GitHub username, repository, and optional personal access token
-          GITHUB_USERNAME=Moeenahamd
-          GITHUB_REPO=moeenahamd.github.io
-          GITHUB_TOKEN=${{secrets.PETOKEN}}
-
-          # Create a variable for the GitHub API URL
-          GITHUB_API_URL="https://api.github.com/repos/$GITHUB_USERNAME/$GITHUB_REPO/issues"
-          
-          GITHUB_API_URL2="https://api.github.com/repos/MaxMelcher/profile-darkmode/issues"
-
-          # Fetch issues from the repository
-          if [ -n "$GITHUB_TOKEN" ]; then
-            API_DATA1=$(curl -H "Authorization: token $GITHUB_TOKEN" \
-                 -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL")
-                 
-            echo "$API_DATA" > test1.json
-            
-            API_DATA2=$(curl -H "Authorization: token $GITHUB_TOKEN" \
-                 -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL2")
-                 
-            echo "$API_DATA2" > test2.json
-
-            var x=0
-            
-            json1=$(cat test1.json)
-            json2=$(cat test2.json)
-            
-          else
-            curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
-          fi
-      - name: Push into Git
-        run: |-
-          git config --global user.email "moeenranjha01@gmail.com"
-          git config --global user.name "Moeenahamd"
-          # git add combined.json
-          # git commit -m "Automated update of rate"
-          # git push
-        
+          echo "Running JavaScript code"
+          const num1 = 5;
+          const num2 = 7;
+          const sum = num1 + num2;
+          echo "The sum of ${num1} and ${num2} is ${sum}"
