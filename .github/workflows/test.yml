@@ -43,17 +43,26 @@ jobs:
             json2=$(cat test2.json)
 
           # Combine the JSON arrays using JavaScript
-            combined_json=$(node -e "const arr1 = $json1; const arr2 = $json2; const combined = arr1.concat(arr2); console.log(JSON.stringify(combined));" > combined.json)
+          #  combined_json=$(node -e "const arr1 = $json1; const arr2 = $json2; const combined = arr1.concat(arr2); console.log(JSON.stringify(combined));" > combined.json)
 
             
           else
             curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
           fi
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Execute JavaScript
+        run: |
+          # Write your JavaScript code here
+          console.log(json1,json2);
       - name: Push into Git
         run: |-
           git config --global user.email "moeenranjha01@gmail.com"
           git config --global user.name "Moeenahamd"
-          git add combined.json
-          git commit -m "Automated update of rate"
-          git push
+          # git add combined.json
+          # git commit -m "Automated update of rate"
+          # git push
         
