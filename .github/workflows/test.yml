@@ -14,9 +14,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Execute JavaScript
+        id: javascript
         run: |
           echo "Running JavaScript code"
-          const num1 = 5;
-          const num2 = 7;
-          const sum = num1 + num2;
-          echo "The sum of ${num1} and ${num2} is ${sum}"
+          num1=5
+          num2=7
+          sum=$((num1 + num2))
+          echo "::set-output name=sum::$sum"
+          
+      - name: Display Result
+        run: |
+          echo "The sum of ${{ steps.javascript.outputs.sum }}"
