@@ -57,7 +57,7 @@ jobs:
       - name: Execute JavaScript
         run: |
           # Write your JavaScript code here
-          console.log(json1,json2);
+          console.log("$API_DATA2");
       - name: Push into Git
         run: |-
           git config --global user.email "moeenranjha01@gmail.com"
