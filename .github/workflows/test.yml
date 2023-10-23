@@ -29,10 +29,16 @@ jobs:
           if [ -n "$GITHUB_TOKEN" ]; then
             API_DATA1=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL") --output test1.json
+                 "$GITHUB_API_URL")
+                 
+            echo "$API_DATA" > test1.json
+            
             API_DATA2=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
-                 "$GITHUB_API_URL2") --output test2.json
+                 "$GITHUB_API_URL2")
+                 
+            echo "$API_DATA2" > test2.json
+            
             json1=$(cat test1.json)
             json2=$(cat test2.json)
 
