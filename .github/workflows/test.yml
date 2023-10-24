@@ -24,6 +24,7 @@ jobs:
           GITHUB_API_URL="https://api.github.com/repos/$GITHUB_USERNAME/$GITHUB_REPO/issues"
           
           GITHUB_API_URL2="https://api.github.com/repos/MaxMelcher/profile-darkmode/issues"
+          GITHUB_API_URL3="https://api.github.com/repos/Moeenahamd/chat-ui/issues"
 
           # Fetch issues from the repository
           if [ -n "$GITHUB_TOKEN" ]; then
@@ -34,11 +35,15 @@ jobs:
             API_DATA2=$(curl -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
                  "$GITHUB_API_URL2")
+            
+            API_DATA3=$(curl -H "Authorization: token $GITHUB_TOKEN" \
+                 -H "Accept: application/vnd.github.v3+json" \
+                 "$GITHUB_API_URL3")
                  
           combined_array=("${API_DATA1[@]}","${API_DATA2[@]}")
           
           # Use JavaScript to parse the JSON arrays and combine them
-          combined_json=$(node -e "const arr1 = ${API_DATA1}; const arr2 = ${API_DATA1}; const combined = [...arr1, ...arr2]; console.log(JSON.stringify(combined));")
+          combined_json=$(node -e "const arr1 = ${API_DATA1}; const arr2 = ${API_DATA1}; const arr3 = ${API_DATA3}; const combined = [...arr1, ...arr2, ...arr3]; console.log(JSON.stringify(combined));")
 
           # Set the output variable with the concatenated array
           echo "::set-output name=combined_json::${combined_json}"
