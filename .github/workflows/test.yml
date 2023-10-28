@@ -21,11 +21,10 @@ jobs:
           API_DATA3=$(curl -X GET "https://api.github.com/repos/ARK-Builders/arklib-android/issues")
           
           # Use JavaScript to parse the JSON arrays and combine them
-          combined_json=$(node -e "const combined = [...${API_DATA1}, ...${API_DATA2}];")
-          combined_json=$(node -e "const combined = [...${combined_json}, ...${API_DATA3}];")
+          combined_data="[$API_DATA1, $API_DATA2, $API_DATA3]"
 
           
-          echo "$combined_json" > test.json
+          echo "$combined_data" > test.json
           
           
       - name: Push into Git
