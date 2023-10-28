@@ -28,7 +28,18 @@ jobs:
         run: |
           data=$(node -e "const myFunction = require('./myFunction'); console.log(myFunction());")
           echo "::set-output name=data::$data"
+          echo "$data" > issues.json
 
       - name: Use the Output Data
         run: |
           echo "The data returned by the JavaScript function: ${{ steps.myfunction.outputs.data }}"
+        # Write the combined array to a new file
+          
+          
+      - name: Push into Git
+        run: |-
+          git config --global user.email "bot@ark-builders.dev"
+          git config --global user.name "ARK Builders Bot"
+          git add issues.json
+          git commit -m "Automated update of rate"
+          git push
