@@ -17,6 +17,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: Install Dependencies
+        run: |
+          npm install node-fetch
+        working-directory: ${{ github.workspace }}
 
       - name: Run JavaScript Function and Set Output
         id: myfunction
