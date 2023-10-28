@@ -1,4 +1,4 @@
-nst axios = require('axios');
+const axios = require('axios');
 
 async function callApi() {
   try {
