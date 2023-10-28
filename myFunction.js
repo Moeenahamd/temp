@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function callApi() {
   try {
-    const response = await axios.get('https://api.github.com/repos/ARK-Builders/arklib-android/issues');
+    const response = await axios.get('https://api.github.com/repos/ARK-Builders/website/issues');
     if (response.status === 200) {
       return response.data;
     } else {
