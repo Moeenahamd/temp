@@ -4,9 +4,8 @@ async function callApi() {
   try {
     const response = await axios.get('https://api.github.com/repos/ARK-Builders/website/issues');
     if (response.status === 200) {
-      const data = await response.json();
-      console.log(data)
-      return data.data;
+      const jsonData = JSON.stringify(response.data);
+      return jsonData;
     } else {
       throw new Error(`API request failed with status ${response.status}`);
     }
