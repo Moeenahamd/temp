@@ -15,19 +15,10 @@ jobs:
 
       - name: Fetch Issues
         run: |
-          # Replace these placeholders with your GitHub username, repository, and optional personal access token
-          GITHUB_USERNAME=Moeenahamd
-          GITHUB_REPO=moeenahamd.github.io
-          GITHUB_TOKEN=${{secrets.PETOKEN}}
-
-          # Fetch issues from the repository
-          API_DATA1=$(curl -X GET "https://api.github.com/repos/$GITHUB_USERNAME/$GITHUB_REPO/issues")
-               
-          API_DATA2=$(curl -X GET "https://api.github.com/repos/MaxMelcher/profile-darkmode/issues")
-          
-          API_DATA3=$(curl -X GET "https://api.github.com/repos/Moeenahamd/chat-ui/issues")
-                 
-          combined_array=("${API_DATA1[@]}","${API_DATA2[@]}")
+        
+          API_DATA1=$(curl -X GET "https://api.github.com/repos/ARK-Builders/website/issues")
+          API_DATA2=$(curl -X GET "https://api.github.com/repos/ARK-Builders/arklib/issues")
+          API_DATA3=$(curl -X GET "https://api.github.com/repos/ARK-Builders/arklib-android/issues")
           
           # Use JavaScript to parse the JSON arrays and combine them
           combined_json=$(node -e "const arr1 = ${API_DATA1}; const arr2 = ${API_DATA2}; const arr3 = ${API_DATA3}; const combined = [...arr1, ...arr2]; console.log(JSON.stringify(combined));")
