@@ -6,28 +6,24 @@ on:
       - main
 
 jobs:
-  run_my_function:
+  call_api_job:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Install Node.js
+      - name: Setup Node.js and NPM
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+
       - name: Install Dependencies
         run: |
-          npm install node-fetch
+          npm install axios
         working-directory: ${{ github.workspace }}
 
-      - name: Install ESM
-        run: |
-          npm install esm
-        working-directory: ${{ github.workspace }}
-
-      - name: Run JavaScript Function and Set Output
+      - name: Run JavaScript File
         id: myfunction
         run: |
           data=$(node -e "const myFunction = require('./myFunction'); console.log(myFunction());")
