@@ -1,5 +1,6 @@
-function myFunction() {
-    console.log("Hello from myFunction!");
+function getData() {
+    const data = "This is the data you want to return.";
+    return data;
 }
 
-module.exports = myFunction;
+module.exports = getData;
