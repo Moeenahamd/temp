@@ -1,4 +1,4 @@
-function getData() {
+async function getData() {
     const apiUrl = `https://api.github.com/repos/ARK-Builders/arklib-android/issues`;
     try {
         const response = await fetch(apiUrl, {
