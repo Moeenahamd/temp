@@ -26,7 +26,7 @@ jobs:
       - name: Run JavaScript File
         id: myfunction
         run: |
-          data=$(node -e "const { callApi } = require('./apiCaller');callApi().then((data) => {console.log('API Response:', data);}).catch((error) => {console.error('Error calling API:', error);})")
+          data=$(node -e "const myFunction = require('./myFunction'); console.log(myFunction());")
           echo "::set-output name=data::$data"
 
       - name: Use the Output Data
