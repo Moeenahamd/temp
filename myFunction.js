@@ -13,4 +13,4 @@ async function callApi() {
   }
 }
 
-module.exports = { callApi };
+module.exports = callApi;
