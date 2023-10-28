@@ -4,7 +4,8 @@ async function callApi() {
   try {
     const response = await axios.get('https://api.github.com/repos/ARK-Builders/website/issues');
     if (response.status === 200) {
-      const jsonObject = JSON.stringify(response.data);
+      var jsonObject = JSON.stringify(response.data);
+      jsonObject.replace(/&quot;/ig,'"');
       const responseData = JSON.parse(jsonObject);
       console.log(responseData)
       return responseData;
