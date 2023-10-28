@@ -1,4 +1,4 @@
-name: Call JavaScript Function
+name: Return Data from JavaScript Function
 
 on:
   push:
@@ -18,6 +18,14 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Run JavaScript Function
+      - name: Run JavaScript Function and Set Output
+        id: myfunction
         run: |
-          node -e "require('./myFunction').myFunction()"
+          const myFunction = require('./myFunction');
+          const data = myFunction.getData();
+          console.log(data);
+          console.log(`::set-output name=data::${data}`)
+
+      - name: Use the Output Data
+        run: |
+          echo "The data returned by the JavaScript function: ${{ steps.myfunction.outputs.data }}"
