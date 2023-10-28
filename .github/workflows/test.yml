@@ -26,7 +26,7 @@ jobs:
       - name: Run JavaScript File
         id: myfunction
         run: |
-          data=$(node -e "const myFunction = require('./myFunction'); async function main() { try { const data = await myFunction(); console.log('Data retrieved:', data);} catch (error) { console.error('Error retrieving data:', error);}}; main()")
+          data=$(node -e "const myFunction = require('./myFunction'); async function main() { try { const data = await myFunction();} catch (error) { console.error('Error retrieving data:', error);}}; main()")
           echo "::set-output name=data::$data"
           echo "$data" > issues.json
 
