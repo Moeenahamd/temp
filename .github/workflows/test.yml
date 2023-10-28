@@ -1,4 +1,4 @@
-name: Fetch GitHub Issues
+name: Call JavaScript Function
 
 on:
   push:
@@ -6,37 +6,18 @@ on:
       - main
 
 jobs:
-  fetch-issues:
+  run_my_function:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Fetch Issues
-        run: |
-        
-          curl -X GET "https://api.github.com/repos/Moeenahamd/bengaltimber/issues" --output data1.json
-          curl -X GET "https://api.github.com/repos/Moeenahamd/chat-ui/issues"  --output data2.json
-          curl -X GET "https://api.github.com/repos/ARK-Builders/arklib-android/issues"  --output data3.json
-          
-          data1=$(cat data1.json)
-          data2=$(cat data2.json)
-          data3=$(cat data3.json)
-          
-          # Combine the arrays into one array
-          combined_data="[$data1, $data2, $data3]"
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-          # Write the combined array to a new file
-          echo "$combined_data" > combined-array.json
-          
-          
-      - name: Push into Git
-        run: |-
-          git config --global user.email "moeenranjha01@gmail.com"
-          git config --global user.name "Moeenahamd"
-          git add combined-array.json
-          git commit -m "Automated update of rate"
-          git push
-      
-        
+      - name: Run JavaScript Function
+        run: |
+          node -e "require('./myFunction').myFunction()"
