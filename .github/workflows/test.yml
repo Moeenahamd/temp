@@ -37,10 +37,6 @@ jobs:
           
           echo "$combined_json" > test.json
           
-            
-          else
-            curl -H "Accept: application/vnd.github.v3+json" "$GITHUB_API_URL" --output fiat-rates.json
-          fi
           
       - name: Push into Git
         run: |-
