@@ -1,6 +1,14 @@
 function getData() {
-    const data = "This is the data you want to return.";
-    return data;
+    const apiUrl = `https://api.github.com/repos/ARK-Builders/arklib-android/issues`;
+    try {
+        const response = await fetch(apiUrl, {
+        });
+        return response;
+    }
+    catch (error) {
+        console.error('Error fetching repositories:', error);
+        return [];
+  }
 }
 
 module.exports = getData;
