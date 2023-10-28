@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 async function getData() {
     const apiUrl = `https://api.github.com/repos/ARK-Builders/arklib-android/issues`;
     try {
