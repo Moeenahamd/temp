@@ -21,7 +21,7 @@ jobs:
       - name: Run JavaScript Function and Set Output
         id: myfunction
         run: |
-          data=$(node -e "const myFunction = require('./myFunction'); console.log(myFunction());")
+          data=$(node -e "const myFunction = require('./myFunction'); const fetch = require('node-fetch'); console.log(myFunction());")
           echo "::set-output name=data::$data"
 
       - name: Use the Output Data
