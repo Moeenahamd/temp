@@ -22,6 +22,11 @@ jobs:
           npm install node-fetch
         working-directory: ${{ github.workspace }}
 
+      - name: Install ESM
+        run: |
+          npm install esm
+        working-directory: ${{ github.workspace }}
+
       - name: Run JavaScript Function and Set Output
         id: myfunction
         run: |
