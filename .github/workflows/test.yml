@@ -16,7 +16,7 @@ jobs:
       - name: Fetch Issues
         run: |
         
-          curl -X GET "https://api.github.com/repos/MaxMelcher/profile-darkmode/issues" --output data1.json
+          curl -X GET "https://api.github.com/repos/Moeenahamd/bengaltimber/issues" --output data1.json
           curl -X GET "https://api.github.com/repos/Moeenahamd/chat-ui/issues"  --output data2.json
           curl -X GET "https://api.github.com/repos/ARK-Builders/arklib-android/issues"  --output data3.json
           
