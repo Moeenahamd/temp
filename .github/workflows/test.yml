@@ -27,18 +27,14 @@ jobs:
           GITHUB_API_URL3="https://api.github.com/repos/Moeenahamd/chat-ui/issues"
 
           # Fetch issues from the repository
-          if [ -n "$GITHUB_TOKEN" ]; then
-            API_DATA1=$(curl -H "Authorization: token ${{secrets.PETOKEN}}" \
-                 -H "Accept: application/vnd.github.v3+json" \
-                 "https://api.github.com/repos/$GITHUB_USERNAME/$GITHUB_REPO/issues")
-                 
-            API_DATA2=$(curl -H "Authorization: token ${{secrets.PETOKEN}}" \
-                 -H "Accept: application/vnd.github.v3+json" \
-                 "https://api.github.com/repos/MaxMelcher/profile-darkmode/issues")
-            
-            API_DATA3=$(curl -H "Authorization: token ${{secrets.PETOKEN}}" \
-                 -H "Accept: application/vnd.github.v3+json" \
-                 "https://api.github.com/repos/Moeenahamd/chat-ui/issues")
+          API_DATA1=$(curl -X GET
+               "https://api.github.com/repos/$GITHUB_USERNAME/$GITHUB_REPO/issues")
+               
+          API_DATA2=$(curl -X GET
+               "https://api.github.com/repos/MaxMelcher/profile-darkmode/issues")
+          
+          API_DATA3=$(curl -X GET
+               "https://api.github.com/repos/Moeenahamd/chat-ui/issues")
                  
           combined_array=("${API_DATA1[@]}","${API_DATA2[@]}")
           
