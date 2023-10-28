@@ -1,15 +1,16 @@
-const fetch = require('node-fetch');
-async function getData() {
-    const apiUrl = `https://api.github.com/repos/ARK-Builders/arklib-android/issues`;
-    try {
-        const response = await fetch(apiUrl, {
-        });
-        return response;
+nst axios = require('axios');
+
+async function callApi() {
+  try {
+    const response = await axios.get('https://api.example.com/data');
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error(`API request failed with status ${response.status}`);
     }
-    catch (error) {
-        console.error('Error fetching repositories:', error);
-        return [];
+  } catch (error) {
+    throw error;
   }
 }
 
-module.exports = getData;
+module.exports = { callApi };
