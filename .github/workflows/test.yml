@@ -16,15 +16,19 @@ jobs:
       - name: Fetch Issues
         run: |
         
-          API_DATA1=$(curl -X GET "https://api.github.com/repos/ARK-Builders/website/issues")
-          API_DATA2=$(curl -X GET "https://api.github.com/repos/ARK-Builders/arklib/issues")
-          API_DATA3=$(curl -X GET "https://api.github.com/repos/ARK-Builders/arklib-android/issues")
+          curl -X GET "https://api.github.com/repos/MaxMelcher/profile-darkmode/issues" --output data1.json
+          curl -X GET "https://api.github.com/repos/Moeenahamd/chat-ui/issues"  --output data2.json
+          curl -X GET "https://api.github.com/repos/ARK-Builders/arklib-android/issues"  --output data3.json
           
-          # Use JavaScript to parse the JSON arrays and combine them
-          combined_data="[$API_DATA1, $API_DATA2, $API_DATA3]"
+          data1=$(cat data1.json)
+          data2=$(cat data2.json)
+          data3=$(cat data3.json)
+          
+          # Combine the arrays into one array
+          combined_data="[$data1, $data2, $data3]"
 
-          
-          echo "$combined_data" > test.json
+          # Write the combined array to a new file
+          echo "$combined_data" > combined-array.json
           
           
       - name: Push into Git
