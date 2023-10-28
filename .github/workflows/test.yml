@@ -22,6 +22,7 @@ jobs:
           
           # Use JavaScript to parse the JSON arrays and combine them
           combined_json = $([...${API_DATA1}, ...${API_DATA2}])
+          combined_json=$(node -e "const combined = [...${API_DATA1}, ...${API_DATA2}]; const combinedF = [...combined, ...${API_DATA3}]; ")
 
           
           echo "$combined_json" > test.json
