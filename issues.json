@@ -1,12 +1,1 @@
-[
-  { name: 'Moeenahamd/agent-agora-ui' },
-  { name: 'Moeenahamd/al-folio' },
-  { name: 'Moeenahamd/auto-deploy-on-digital-ocean' },
-  { name: 'Moeenahamd/bengaltimber' },
-  { name: 'Moeenahamd/diet-dashboard-chart' },
-  { name: 'Moeenahamd/enterprise' },
-  { name: 'Moeenahamd/jamia-moazzamia' },
-  { name: 'Moeenahamd/moeenahamd.github.io' },
-  { name: 'Moeenahamd/subway-web' },
-  { name: 'Moeenahamd/temp' }
-]
+[{"name":"Moeenahamd/agent-agora-ui"},{"name":"Moeenahamd/al-folio"},{"name":"Moeenahamd/auto-deploy-on-digital-ocean"},{"name":"Moeenahamd/bengaltimber"},{"name":"Moeenahamd/diet-dashboard-chart"},{"name":"Moeenahamd/enterprise"},{"name":"Moeenahamd/jamia-moazzamia"},{"name":"Moeenahamd/moeenahamd.github.io"},{"name":"Moeenahamd/subway-web"},{"name":"Moeenahamd/temp"}]
