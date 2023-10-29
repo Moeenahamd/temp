@@ -7,9 +7,9 @@ async function callApi() {
     if (response.status === 200) {
       const repos = response.data.map(element => element.full_name);
       for (const repo of repos) {
-        issuesList.push(repo)
+        issuesList.push({"name": repo})
       }
-      const res = JSON.stringify(issuesList);
+      const res = JSON.stringify(repos);
       return res;
     } else {
       throw new Error(`API request failed with status ${response.status}`);
