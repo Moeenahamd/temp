@@ -11,7 +11,9 @@ async function callApi() {
         const issues = await axios.get('https://api.github.com/repos/'+repo+'/issues');
         
         if (issues.status === 200) {
+          if(issues.data.length > 0){
            issuesList.push(issues.data);
+          }
         }
         else {
           throw new Error(`API request failed with status ${response.status}`);
