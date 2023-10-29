@@ -5,7 +5,7 @@ async function callApi() {
     const response = await axios.get('https://api.github.com/users/Moeenahamd/repos');
     if (response.status === 200) {
       const data = JSON.stringify(response.data);
-      const repos = people.map(element => element.full_name);
+      const repos = data.map(element => element.full_name);
       
       console.log(repos);
       return repos;
