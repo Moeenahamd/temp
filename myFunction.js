@@ -10,6 +10,7 @@ async function callApi() {
         issuesList.push({"name": repo})
       }
       const res = JSON.stringify(issuesList);
+      console.log(issuesList);
       return res;
     } else {
       throw new Error(`API request failed with status ${response.status}`);
