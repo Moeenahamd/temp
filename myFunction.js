@@ -13,7 +13,6 @@ async function callApi() {
         if (issues.status === 200) {
           if(issues.data.length > 0){
            for (const issue of issues.data) {
-              const user = issue.user.map(element => element.login);
               const assignees = issue.assignees.map(element => element.login);
               const labels = issue.labels.map(element => element.name);
               issuesList.push({
@@ -21,7 +20,7 @@ async function callApi() {
                 state: issue.state,
                 labels: labels,
                 assignees: assignees,
-                user: user,
+                user: issue.user.login,
                 date: new Date(issue.created_at)
               })
             }
