@@ -11,7 +11,7 @@ async function callApi() {
         issuesList.push(repo)
       }
       console.log(issuesList);
-      return issuesList;
+      return JSON.stringify(issuesList);
     } else {
       throw new Error(`API request failed with status ${response.status}`);
     }
