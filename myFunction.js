@@ -13,7 +13,14 @@ async function callApi() {
         if (issues.status === 200) {
           if(issues.data.length > 0){
            for (const issue of issues.data) {
-              issuesList.push(issue);
+              issuesList.push({
+                title: issue.title,
+                state: issue.state,
+                labels: issue.labels,
+                assignees: issue.assignees,
+                user: issue.user,
+                date: new Date(issue.created_at)
+              })
             }
           }
         }
