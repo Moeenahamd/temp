@@ -4,9 +4,11 @@ async function callApi() {
   try {
     const response = await axios.get('https://api.github.com/users/Moeenahamd/repos');
     if (response.status === 200) {
-      const jsonData = JSON.stringify(response.data);
-      console.log(jsonData);
-      return jsonData;
+      const data = JSON.stringify(response.data);
+      const repos = people.map(element => element.full_name);
+      
+      console.log(repos);
+      return repos;
     } else {
       throw new Error(`API request failed with status ${response.status}`);
     }
