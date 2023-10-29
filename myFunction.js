@@ -27,7 +27,6 @@ async function callApi() {
       }
       
       const res = JSON.stringify(issuesList);
-      console.log(res);
       return res;
     } else {
       throw new Error(`API request failed with status ${response.status}`);
