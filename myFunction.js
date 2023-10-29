@@ -3,7 +3,7 @@ const axios = require('axios');
 async function callApi() {
   var issuesList = [];
   try {
-    var repositories = await axios.get('https://api.github.com/users/Moeenahamd/repos');
+    var repositories = await axios.get('https://api.github.com/users/ARK-Builders/repos');
     if (repositories.status === 200) {
        repositories = repositories.data.map(element => element.full_name);
       for (const repo of repositories) {
