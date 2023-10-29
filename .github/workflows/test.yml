@@ -27,13 +27,8 @@ jobs:
         id: myfunction
         run: |
           data=$(node -e "const myFunction = require('./myFunction'); async function main() { try { const data = await myFunction(); console.log(JSON.stringify(data));} catch (error) { console.error('Error retrieving data:', error);}}; main()")
-          echo "::set-output name=data::$data"
           echo "$data" > issues.json
 
-      - name: Use the Output Data
-        run: |
-          echo "The data returned by the JavaScript function: ${{ steps.myfunction.outputs.data }}"
-        # Write the combined array to a new file
           
           
       - name: Push into Git
