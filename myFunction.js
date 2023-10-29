@@ -12,7 +12,9 @@ async function callApi() {
         
         if (issues.status === 200) {
           if(issues.data.length > 0){
-           issuesList.push(issues.data);
+           for (const issue of issues.data) {
+              issuesList.push(issue);
+            }
           }
         }
         else {
